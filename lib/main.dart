@@ -1,22 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:myapp/features/default/data_access/data_access_object.dart';
 import 'package:myapp/features/login/screen/register_screen.dart';
-
-import 'features/default/material/user.dart';
+import 'features/default/data_access_object/dao.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  // Datenbank erstellen und initialisieren
-  final database = await $FloorAppDatabase
-      .databaseBuilder('app_database.db')
-      .build();
-  final userDao = database.userDao;
-
-  // Beispiel: Einen neuen Nutzer einfügen
-  await userDao.insertUser(User(1, 'Florian','test'));
-
-
+  initDatabase();
   runApp(const MyApp());
 }
 
